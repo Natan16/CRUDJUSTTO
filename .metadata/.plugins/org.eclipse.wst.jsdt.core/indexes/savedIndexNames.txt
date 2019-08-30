@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Dev\CRUDJUSTTO\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+862552932.index
+984854545.index
+3632258615.index
+782768158.index
+4214625534.index
+667457629.index

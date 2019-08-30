@@ -1,0 +1,12 @@
+package web;
+
+public class Advogado {
+	
+	private String nome;
+	
+	public Advogado() {
+		
+	}
+	
+	
+}

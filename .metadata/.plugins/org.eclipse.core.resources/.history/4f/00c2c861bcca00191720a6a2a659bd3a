@@ -1,0 +1,17 @@
+package web;
+
+import java.util.Calendar;
+
+public class Advogado {
+	
+	private String nome;
+	private String endereco;
+	private String email;
+	private Calendar nascimento;
+	
+	public Advogado() {
+		
+	}
+	
+	
+}
