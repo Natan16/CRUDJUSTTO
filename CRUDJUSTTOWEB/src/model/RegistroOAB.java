@@ -1,4 +1,11 @@
 package model;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
+import utils.Listagens;
+
 //A - Inscrição Suplementar
 //B - Inscrição por Transferência
 //E - Inscrição de Estagiário
@@ -11,9 +18,21 @@ public class RegistroOAB {
 	private String numero;
 	private int tipo;
 	
-	public RegistroOAB(String UF , String numero , char tipo){
+	//dicionarioTipo = new ArrayMap<Character , String>();//dicionário que mapeia os tipos nas descrições dos tipos
+	 
+	//verifica se um determinado numero de registro é válido 
+	public static boolean registroValido(String numero) {
+		Pattern.matches("[amn]", "abcd");
+		return true;
+	}
+	
+	public RegistroOAB(String UF , String numero) {
 		this.UF = UF; 
 		this.numero = numero;
+		this.tipo = getTipoFromNumero(numero);
+	}
+	public RegistroOAB(String UF , String numero , char tipo){
+		this(UF , numero);
 		this.tipo = tipo;
 	}
 
@@ -21,8 +40,8 @@ public class RegistroOAB {
 		return UF;
 	}
 
-	public void setUF(String uF) {
-		UF = uF;
+	public void setUF(String UF) {
+		this.UF = UF;
 	}
 
 	public String getNumero() {
@@ -41,5 +60,14 @@ public class RegistroOAB {
 		this.tipo = tipo;
 	}
 	
+	private char getTipoFromNumero(String numero) {
+		numero = numero.toUpperCase();
+		for (char tipo : Listagens.getTiposDeRegistro() ) {
+			if( numero.contains(String.valueOf(tipo)) )
+				return tipo;
+		}
+		return 'D';
+		
+	}
 	//TODO : aqui seria um bom canto pra chegar validade do registro?
 }

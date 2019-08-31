@@ -3,6 +3,8 @@ package dao;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -11,13 +13,17 @@ import model.Advogado;
 public class AdvogadoDao {
 	private Connection conn;
 	private PreparedStatement stmt;
+	private Statement st;
+	private ResultSet rs;
+	private ArrayList<Advogado> queryAdvogados = new ArrayList<Advogado>();
+	
 	public AdvogadoDao() {
 		conn = new ConnectionFactory().getConexaoDB();
 	}
 	
 	@SuppressWarnings("deprecation")
 	public void inserir(Advogado advogado){
-		String sql = "INSERT INTO advogados (descricao, email, nome , telefone , dataNascimento , uf , registro ) VALUES(?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO advogados (descricao, email, nome , telefone , dataNascimento , uf , registro , senha) VALUES(?,?,?,?,?,?,?,?)";
 		try {
 			stmt = conn.prepareStatement(sql);
 			stmt.setString(1, advogado.getDesc());
@@ -32,6 +38,7 @@ public class AdvogadoDao {
 			//UF e número compoem a minha PK
 			stmt.setString(6, advogado.getRegistroOAB().getUF());
 			stmt.setString(7, advogado.getRegistroOAB().getNumero());
+			stmt.setString(8, advogado.getSenha());
 			
 			stmt.execute();
 			stmt.close();
@@ -59,20 +66,48 @@ public class AdvogadoDao {
 			throw new RuntimeException("Erro 4 :" +erro);
 		}
 	}
-	public ArrayList<Advogado> listarTodos(Advogado advogado){
-		String sql = "";
+	public ArrayList<Advogado> listarTodos(){
+		String sql = "SELECT * FROM advogados";
 		try {
-			
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			while(rs.next()) {
+				//fazer o extract do metodo que retorna Advogado a partir de uma query
+				String descricao = rs.getString("descricao");
+				String email = rs.getString("email");
+				String nome = rs.getString("nome");
+				String telefone = rs.getString("telefone");
+				Date dataNascimento = rs.getDate("dataNascimento");
+				String uf = rs.getString("uf");
+				String registro = rs.getString("registro");
+				String senha = rs.getString("senha");
+				//usar registro OAB não é legal, pois aumenta acoplamento
+				//usar uma facade ou criar um construtor a mais em advogado
+				Advogado advogado = new Advogado();
+				advogado.setNome(nome);
+	            advogado.setTelefone(telefone);
+	            advogado.setEmail(email);
+	            //TODO : lidar com a conversão da data de nascimento
+	            //advogado.setDataNascimento(Calendar.getInstance().setTime(dataNascimento.to));
+	            advogado.setSenha(senha);
+	            advogado.setDesc(descricao);
+				advogado.criarRegistroOAB(uf ,registro);
+				queryAdvogados.add(advogado);
+			}
 			
 		}catch(Exception erro) {
 			//TODO : trocar texto da excessão por algo mais descritivo
 			throw new RuntimeException("Erro 5 :" +erro);
 		}
-		return null;
+		return queryAdvogados;
 	}
 	
 	public ArrayList<Advogado> listarTodosDescricao(String valor){
-		String sql = "SELECT * FROM produto WHERE descricao_produto LIKE '%" + valor + "%'";
+		
+		//o mecanismo de busca vai listar todos os advogados que tenham algum dos parâmetros
+		//contendo as partes buscadas
+		
+		String sql = "SELECT * FROM advogados WHERE descricao LIKE '%" + valor + "%'";
 		try {
 			
 			

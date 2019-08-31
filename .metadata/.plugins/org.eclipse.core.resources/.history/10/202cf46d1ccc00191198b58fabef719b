@@ -1,0 +1,25 @@
+<%@ page import="utils.Lista,
+				 java.util.List,
+                  dao.AdvogadoDao,
+                  model.*" %>
+<html>
+    <body>
+        <table>
+            <%
+            AdvogadoDao dao = new AdvogadoDao();
+            List<Advogado> advogados = dao.listarTodos();
+
+            for (Advogado advogado : advogados ) {
+            %>
+                <tr>
+                    <td><%=advogado.getNome() %></td> 
+                    <td><%=advogado.getEmail() %></td>
+                    <td><%=advogado.getEndereco() %></td>
+                    <td><%=advogado.getDataNascimento().getTime() %></td>
+                </tr>
+            <%
+            }
+            %>
+        </table>
+    </body>
+</html>

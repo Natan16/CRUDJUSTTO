@@ -1,4 +1,4 @@
-<%@ page import="utils.Lista,
+<%@ page import="utils.Listagens,
 				 java.util.List,
                   dao.*,
                   model.*" %>
@@ -11,11 +11,12 @@
              E-mail: <input type="text" name="email" placeholder="email@oab"/><br />
              Telefone: <input type="text" name="telefone" placeholder="(XX)XXXXX-XXXX"/><br />
              Data Nascimento: <input type="text" name="dataNascimento" placeholder="dd/MM/aaaa"/><br />
+             Senha: <input type="text" name="senha" placeholder="***********" required/><br />
              
                           UF &nbsp;&emsp; Registro OAB <br />
              <select name="ufOAB">
              	<%	
-             	List<String> ufs = Lista.getUfs();
+             	List<String> ufs = Listagens.getUfs();
 			 	for (String uf : ufs ) {
                 %>
                 	<option value=<%=uf %>><%=uf%></option>

@@ -11,6 +11,7 @@ public class Advogado {
 	private Calendar dataNascimento;
 	private RegistroOAB registroOAB;
 	private String desc;
+	private String senha;
 	//TODO : colocar o escritório ao qual ele é vinculado
 	
 	//TODO : importante atribuir id único a cada instância
@@ -63,7 +64,7 @@ public class Advogado {
 	public void setRegistroOAB(RegistroOAB registroOAB) {
 		this.registroOAB = registroOAB;
 	}
-
+	
 	public String getDesc() {
 		return desc;
 	}
@@ -71,6 +72,20 @@ public class Advogado {
 	public void setDesc(String desc) {
 		this.desc = desc;
 	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
+	public void criarRegistroOAB(String uf , String registro) {
+		this.registroOAB = new RegistroOAB(uf, registro);
+	}
+	
+	
 	
 
 	

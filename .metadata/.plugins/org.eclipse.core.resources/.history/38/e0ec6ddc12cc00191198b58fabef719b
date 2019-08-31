@@ -1,0 +1,46 @@
+package model;
+//A - Inscrição Suplementar
+//B - Inscrição por Transferência
+//E - Inscrição de Estagiário
+//N - Inscrição de Provisionado
+//P - Inscrição Provisória.
+//se não tiver, considerar letra D
+public class RegistroOAB {
+	
+	private String UF;
+	private String numero;
+	private int tipo;
+	
+	public RegistroOAB(String UF , String numero)
+	public RegistroOAB(String UF , String numero , char tipo){
+		this.UF = UF; 
+		this.numero = numero;
+		this.tipo = tipo;
+	}
+
+	public String getUF() {
+		return UF;
+	}
+
+	public void setUF(String UF) {
+		this.UF = UF;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public int getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+	
+	//TODO : aqui seria um bom canto pra chegar validade do registro?
+}

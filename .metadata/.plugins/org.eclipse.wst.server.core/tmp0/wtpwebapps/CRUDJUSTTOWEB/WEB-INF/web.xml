@@ -10,4 +10,9 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <error-page>
+  	<exception-type>java.lang.Exception</exception-type>
+    <location>/erro.html</location>
+  </error-page>
+  
 </web-app>

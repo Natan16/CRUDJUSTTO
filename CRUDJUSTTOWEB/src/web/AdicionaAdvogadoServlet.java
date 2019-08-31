@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.AdvogadoDao;
 import model.Advogado;
-import model.RegistroOAB;
 import utils.ConverteTexto;
 
 @WebServlet("/adicionaAdvogado")
@@ -40,9 +39,11 @@ public class AdicionaAdvogadoServlet extends HttpServlet {
             String telefone = request.getParameter("telefone");
             String email = request.getParameter("email");
             String dataEmTexto = request.getParameter("dataNascimento");
+            String senha = request.getParameter("senha");
             String ufRegistroOAB = request.getParameter("ufOAB");
             String registroOABEmTexto = request.getParameter("registroOAB");
             String descricao = request.getParameter("desc");
+            
             
             Calendar dataNascimento = null;
             
@@ -62,11 +63,7 @@ public class AdicionaAdvogadoServlet extends HttpServlet {
                 out.println("Formato de data incorreto");
                 return; //para a execução do método
             }
-            
-            RegistroOAB registroOAB = ConverteTexto.textoParaRegistroOAB(ufRegistroOAB , 
-            		registroOABEmTexto) ;
-          
-            
+                                  
             //TODO : verificar se registro duplicado
             //TODO : adicionar confirmação por email
             //TODO : a outra entidade que poderia ter no banco de dados é o escritório
@@ -74,11 +71,12 @@ public class AdicionaAdvogadoServlet extends HttpServlet {
              //tem que ter alguns parâmetros obrigatórios
 
             Advogado advogado = new Advogado();
-            advogado.setRegistroOAB(registroOAB);
+            advogado.criarRegistroOAB(ufRegistroOAB ,registroOABEmTexto);
             advogado.setNome(nome);
             advogado.setTelefone(telefone);
             advogado.setEmail(email);
             advogado.setDataNascimento(dataNascimento);
+            advogado.setSenha(senha);
             advogado.setDesc(descricao);
             
          
