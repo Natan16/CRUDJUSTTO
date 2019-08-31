@@ -57,10 +57,15 @@ public class AdvogadoDao {
 		}
 	}
 	public void excluir(Advogado advogado){
-		String sql = "";
+		
+		String sql = "DELETE FROM advogados WHERE uf=? AND registro=? ;";
+		
 		try {
-			
-			
+			PreparedStatement preparedStmt = conn.prepareStatement(sql);
+			preparedStmt.setString(1, advogado.getRegistroOAB().getUF());
+			preparedStmt.setString(2, advogado.getRegistroOAB().getNumero());
+			preparedStmt.execute();  
+		    conn.close();
 		}catch(Exception erro) {
 			//TODO : trocar texto da excessão por algo mais descritivo
 			throw new RuntimeException("Erro 4 :" +erro);

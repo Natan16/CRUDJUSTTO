@@ -1,7 +1,0 @@
-package model;
-
-public class RegistroOAB {
-	RegistroOAB(String UF , String Numero , String Tipo){
-		
-	}
-}
