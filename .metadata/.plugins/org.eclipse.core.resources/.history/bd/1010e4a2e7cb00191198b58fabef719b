@@ -1,0 +1,41 @@
+<%@ page import="java.util.*,
+                  dao.*,
+                  model.*" %>
+
+<html>
+     <body>
+         <form action="adicionaAdvogado" method="post">
+             Nome: <input type="text" name="nome" placeholder="Nome Completo" required/><br />
+             E-mail: <input type="text" name="email" placeholder="email@oab"/><br />
+             Telefone: <input type="text" name="telefone" placeholder="(XX)XXXXX-XXXX"/><br />
+             Data Nascimento: <input type="text" name="dataNascimento" placeholder="dd/MM/aaaa"/><br />
+             
+                          UF &nbsp;&emsp; Registro OAB <br />
+             <select name="ufOAB">
+             	<%	
+			 	for (Contato contato : contatos ) {
+                %>
+                	<option value="volvo">CE</option>
+                    <tr>
+                         <td><%=contato.getNome() %></td> 
+                         <td><%=contato.getEmail() %></td>
+                         <td><%=contato.getEndereco() %></td>
+                         <td><%=contato.getDataNascimento().getTime() %></td>
+                     </tr>
+                 <%
+                 }
+                 %>
+			   
+			    <option value="saab">SP</option>
+			    <option value="fiat">RJ</option>
+			    <option value="audi">AM</option>
+  			 </select>
+  			 <input type="text" name="registroOAB" /><br />
+  			 <br />
+			 
+             Descrição: <br />
+             <textarea rows = "5" cols = "60" name = "desc"></textarea><br> 
+             <input   type="submit" value="Registrar" />
+         </form>
+     </body>
+ </html>

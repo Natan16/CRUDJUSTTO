@@ -17,10 +17,8 @@ public class ConverteTexto {
 	
 	public static RegistroOAB textoParaRegistroOAB(String UF , String registroEmTexto) {
 		
-		//for 
-		
+	
 		RegistroOAB registro = new RegistroOAB(UF , registroEmTexto , 'D');
-		
 		return registro;
 	}
 }

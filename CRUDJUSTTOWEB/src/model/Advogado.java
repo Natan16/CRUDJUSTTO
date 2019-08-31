@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Calendar;
+import java.util.Date;
 
 public class Advogado {
 	
@@ -24,10 +25,11 @@ public class Advogado {
 	}
 
 	public Calendar getDataNascimento() {
+		
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(Calendar dataNascimento) {
+	public void setDataNascimento(Calendar dataNascimento ) {
 		this.dataNascimento = dataNascimento;
 	}
 

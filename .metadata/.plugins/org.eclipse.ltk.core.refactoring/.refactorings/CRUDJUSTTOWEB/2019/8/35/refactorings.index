@@ -1,3 +1,10 @@
 1567123929872	Rename resource 'adicionaContato.html'
 1567125098106	Move compilation unit
 1567184000168	Rename package 'entidade'
+1567252635729	Copy file
+1567252642883	Delete element
+1567252645476	Delete element
+1567255161090	Encapsulate field 'ufs'
+1567257317991	Encapsulate field 'UF'
+1567257323273	Encapsulate field 'numero'
+1567257327596	Encapsulate field 'tipo'

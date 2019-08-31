@@ -1,8 +1,10 @@
 package dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import model.Advogado;
 
@@ -13,17 +15,28 @@ public class AdvogadoDao {
 		conn = new ConnectionFactory().getConexaoDB();
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void inserir(Advogado advogado){
-		String sql = "INSERT INTO advogado (descricao_produto , preco_produto) VALUES(?,?)";
+		String sql = "INSERT INTO advogados (descricao, email, nome , telefone , dataNascimento , uf , registro ) VALUES(?,?,?,?,?,?,?)";
 		try {
 			stmt = conn.prepareStatement(sql);
-			//stmt.setString(1, );
-			//stmt.setDate(2 ,);
+			stmt.setString(1, advogado.getDesc());
+			stmt.setString(2, advogado.getEmail());
+			stmt.setString(3, advogado.getNome());
+			stmt.setString(4, advogado.getTelefone());	
+			java.util.Date utilDate = advogado.getDataNascimento().getTime();
+			java.sql.Date date = new java.sql.Date(utilDate.getYear() ,utilDate.getMonth() ,
+					utilDate.getDay());
+			System.out.println(advogado.getRegistroOAB().getUF());
+			stmt.setDate(5, date , Calendar.getInstance() );
+			//UF e número compoem a minha PK
+			stmt.setString(6, advogado.getRegistroOAB().getUF());
+			stmt.setString(7, advogado.getRegistroOAB().getNumero());
+			
 			stmt.execute();
 			stmt.close();
 		}catch(Exception erro) {
-			//TODO : trocar texto da excessão por algo mais descritivo
-			throw new RuntimeException("Erro 2 :" +erro);
+			throw new RuntimeException("Erro na inserção de Advogado :" + erro);
 		}
 	}
 	public void alterar(Advogado advogado){

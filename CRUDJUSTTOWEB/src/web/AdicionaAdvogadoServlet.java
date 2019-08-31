@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.AdvogadoDao;
 import model.Advogado;
 import model.RegistroOAB;
 import utils.ConverteTexto;
@@ -51,7 +52,12 @@ public class AdicionaAdvogadoServlet extends HttpServlet {
             //o que está errado, falor o que está errado e requisitar denovo
             //fazendo a conversão da data
             try {
-                Date date = ConverteTexto.textoParaData(dataEmTexto);
+                
+            	Date date = ConverteTexto.textoParaData(dataEmTexto);
+            	System.out.println(date.toString());
+                dataNascimento = Calendar.getInstance();
+                dataNascimento.setTime(date);
+                
             } catch (ParseException e) {
                 out.println("Formato de data incorreto");
                 return; //para a execução do método
@@ -59,31 +65,26 @@ public class AdicionaAdvogadoServlet extends HttpServlet {
             
             RegistroOAB registroOAB = ConverteTexto.textoParaRegistroOAB(ufRegistroOAB , 
             		registroOABEmTexto) ;
-            //objeto registro OAB tem número
-            //qual a UF correspondente 
-            //e se é de estagiário
+          
             
             //TODO : verificar se registro duplicado
             //TODO : adicionar confirmação por email
             //TODO : a outra entidade que poderia ter no banco de dados é o escritório
             // monta um objeto Advogado
              //tem que ter alguns parâmetros obrigatórios
-//            A - Inscrição Suplementar
-//            B - Inscrição por Transferência
-//            E - Inscrição de Estagiário
-//            N - Inscrição de Provisionado
-//            P - Inscrição Provisória.
-            //se não tiver, considerar letra D
+
             Advogado advogado = new Advogado();
             advogado.setRegistroOAB(registroOAB);
             advogado.setNome(nome);
             advogado.setTelefone(telefone);
             advogado.setEmail(email);
             advogado.setDataNascimento(dataNascimento);
+            advogado.setDesc(descricao);
             
+         
             //salva o registro
-            //AdvogadoDao dao = new AdvogadoDao();
-            //dao.inserir(advogado);
+            AdvogadoDao dao = new AdvogadoDao();
+            dao.inserir(advogado);
             
             // imprime o nome do contato que foi adicionado
             out.println("<html>");
