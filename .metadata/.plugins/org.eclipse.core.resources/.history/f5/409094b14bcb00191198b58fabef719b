@@ -1,0 +1,8 @@
+package table;
+
+public enum ColunasAdvogado {
+	COL_CODIGO_PRODUTO(0) ,
+	COL_DESC_PRODUTO(1) ,
+	COL_PRECO_PRODUTO(2) ;
+	
+}

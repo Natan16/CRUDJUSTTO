@@ -1,0 +1,32 @@
+<html>
+     <body>
+         <form action="adicionaAdvogado" method="post">
+             Nome: <input type="text" name="nome" placeholder="First name"/><br />
+             E-mail: <input type="text" name="email" placeholder="First name"/><br />
+             Endereço: <input type="text" name="endereco" placeholder="First name"/><br />
+             Data Nascimento: <input type="text" name="dataNascimento" placeholder="First name"/><br />
+             
+                          UF                       Registro OAB <br />
+             <select name="ufOAB">
+			    <option value="volvo">CE</option>
+			    <option value="saab">SP</option>
+			    <option value="fiat">RJ</option>
+			    <option value="audi">AM</option>
+  			 </select>
+  			 <input type="text" name="registroOAB" /><br />
+  			 <br />
+			
+             Descrição: <br />
+             <input style="height:200px;font-size:14pt;" type="text" name="desc" /><br />
+		<!-- <!-- <div class="dropdown">
+  			<button class="dropbtn">Dropdown</button>
+  				<div class="dropdown-content">
+    				<a href="#">Link 1</a>
+    				<a href="#">Link 2</a>
+    				<a href="#">Link 3</a>
+  				</div>
+		</div> --> -->
+             <input   type="submit" value="Gravar" />
+         </form>
+     </body>
+ </html>

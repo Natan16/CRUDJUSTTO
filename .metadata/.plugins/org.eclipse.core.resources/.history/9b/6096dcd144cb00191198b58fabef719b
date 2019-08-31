@@ -1,0 +1,55 @@
+package dao;
+
+import entidade.Advogado;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
+public class AdvogadoDao {
+	private Connection conn;
+	private PreparedStatement stmt;
+	public AdvogadoDao() {
+		conn = new ConnectionFactory().getConexaoDB();
+	}
+	
+	public void inserir(Advogado advogado){
+		String sql = "INSERI INTO advogado (nom VALUES(?,?,?,?)";
+		try {
+			stmt
+			
+		}catch(Exception erro) {
+			//TODO : trocar texto da excessão por algo mais descritivo
+			throw new RuntimeException("Erro 2 :" +erro);
+		}
+	}
+	public void inserir(Advogado advogado){
+		String sql = "";
+		try {
+			
+			
+		}catch(Exception erro) {
+			//TODO : trocar texto da excessão por algo mais descritivo
+			throw new RuntimeException("Erro 2 :" +erro);
+		}
+	}
+	public void inserir(Advogado advogado){
+		String sql = "";
+		try {
+			
+			
+		}catch(Exception erro) {
+			//TODO : trocar texto da excessão por algo mais descritivo
+			throw new RuntimeException("Erro 2 :" +erro);
+		}
+	}
+	public void inserir(Advogado advogado){
+		String sql = "";
+		try {
+			
+			
+		}catch(Exception erro) {
+			//TODO : trocar texto da excessão por algo mais descritivo
+			throw new RuntimeException("Erro 2 :" +erro);
+		}
+	}
+}

@@ -1,0 +1,30 @@
+<html>
+     <body>
+         <form action="adicionaAdvogado" method="post">
+             Nome: <input type="text" name="nome" /><br />
+             E-mail: <input type="text" name="email" /><br />
+             Endereço: <input type="text" name="endereco" /><br />
+             Data Nascimento: <input type="text" name="dataNascimento" /><br />
+             
+             Data Nascimento: <input type="text" name="dataNascimento" /><br />
+             UF
+             <select name="cars">
+			    <option value="volvo">Volvo</option>
+			    <option value="saab">Saab</option>
+			    <option value="fiat">Fiat</option>
+			    <option value="audi">Audi</option>
+  			 </select>
+			
+             Descrição: <input type="text" name="desc" /><br />
+		<!-- <!-- <div class="dropdown">
+  			<button class="dropbtn">Dropdown</button>
+  				<div class="dropdown-content">
+    				<a href="#">Link 1</a>
+    				<a href="#">Link 2</a>
+    				<a href="#">Link 3</a>
+  				</div>
+		</div> --> -->
+             <input type="submit" value="Gravar" />
+         </form>
+     </body>
+ </html>

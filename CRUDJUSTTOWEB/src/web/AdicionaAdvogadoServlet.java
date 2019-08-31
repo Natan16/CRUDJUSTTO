@@ -2,23 +2,33 @@ package web;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import entidade.Advogado;
-
-import java.text.ParseException;
+import model.Advogado;
+import model.RegistroOAB;
+import utils.ConverteTexto;
 
 @WebServlet("/adicionaAdvogado")
 public class AdicionaAdvogadoServlet extends HttpServlet {
-
+	
+		public void init(ServletConfig config) throws ServletException {
+	        super.init(config);
+	        log("Iniciando a servlet");
+	    }
+	
+	    public void destroy() {
+	        super.destroy();
+	        log("Destruindo a servlet");
+	    }
 		@Override
 		protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
@@ -26,32 +36,54 @@ public class AdicionaAdvogadoServlet extends HttpServlet {
 			
 			// buscando os parâmetros no request
             String nome = request.getParameter("nome");
-            String endereco = request.getParameter("endereco");
+            String telefone = request.getParameter("telefone");
             String email = request.getParameter("email");
             String dataEmTexto = request.getParameter("dataNascimento");
+            String ufRegistroOAB = request.getParameter("ufOAB");
+            String registroOABEmTexto = request.getParameter("registroOAB");
+            String descricao = request.getParameter("desc");
+            
             Calendar dataNascimento = null;
-
-            // fazendo a conversão da data
-//            try {
-//                Date date =
-//                        new SimpleDateFormat("dd/MM/yyyy").parse(dataEmTexto);
-//                dataNascimento = Calendar.getInstance();
-//                dataNascimento.setTime(date);
-//            } catch (ParseException e) {
-//                out.println("Erro de conversão da data");
-//                return; //para a execução do método
-//            }
-
+            
+            
+            //suporte.email@oabsp.org.br
+            //Em caso de qualquer erro no preenchimento, deixar em vermelho
+            //o que está errado, falor o que está errado e requisitar denovo
+            //fazendo a conversão da data
+            try {
+                Date date = ConverteTexto.textoParaData(dataEmTexto);
+            } catch (ParseException e) {
+                out.println("Formato de data incorreto");
+                return; //para a execução do método
+            }
+            
+            RegistroOAB registroOAB = ConverteTexto.textoParaRegistroOAB(ufRegistroOAB , 
+            		registroOABEmTexto) ;
+            //objeto registro OAB tem número
+            //qual a UF correspondente 
+            //e se é de estagiário
+            
+            //TODO : verificar se registro duplicado
+            //TODO : adicionar confirmação por email
+            //TODO : a outra entidade que poderia ter no banco de dados é o escritório
             // monta um objeto Advogado
+             //tem que ter alguns parâmetros obrigatórios
+//            A - Inscrição Suplementar
+//            B - Inscrição por Transferência
+//            E - Inscrição de Estagiário
+//            N - Inscrição de Provisionado
+//            P - Inscrição Provisória.
+            //se não tiver, considerar letra D
             Advogado advogado = new Advogado();
+            advogado.setRegistroOAB(registroOAB);
             advogado.setNome(nome);
-            advogado.setEndereco(endereco);
+            advogado.setTelefone(telefone);
             advogado.setEmail(email);
             advogado.setDataNascimento(dataNascimento);
-
+            
             //salva o registro
-//            AdvogadoDao dao = new AdvogadoDao();
-//            dao.adiciona(contato);
+            //AdvogadoDao dao = new AdvogadoDao();
+            //dao.inserir(advogado);
             
             // imprime o nome do contato que foi adicionado
             out.println("<html>");

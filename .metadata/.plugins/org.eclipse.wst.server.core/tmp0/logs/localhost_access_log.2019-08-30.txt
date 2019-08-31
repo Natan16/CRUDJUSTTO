@@ -1,0 +1,9 @@
+127.0.0.1 - - [30/Aug/2019:14:46:40 -0300] "GET / HTTP/1.1" 404 1036
+0:0:0:0:0:0:0:1 - - [30/Aug/2019:14:46:48 -0300] "GET /CRUDJUSTTOWEB/adicionaAdvogado?nome=Natan+Viana&email=natanvianat16%40gmail.com&endereco=Rua+h8b+202+campus+do+cta&dataNascimento=16%2F08%2F1993 HTTP/1.1" 200 79
+0:0:0:0:0:0:0:1 - - [30/Aug/2019:14:46:58 -0300] "GET /CRUDJUSTTOWEB/adiciona-advogado.html HTTP/1.1" 200 447
+0:0:0:0:0:0:0:1 - - [30/Aug/2019:14:47:18 -0300] "POST /CRUDJUSTTOWEB/adicionaAdvogado HTTP/1.1" 200 68
+0:0:0:0:0:0:0:1 - - [30/Aug/2019:14:47:23 -0300] "POST /CRUDJUSTTOWEB/adicionaAdvogado HTTP/1.1" 200 68
+0:0:0:0:0:0:0:1 - - [30/Aug/2019:14:47:27 -0300] "POST /CRUDJUSTTOWEB/adicionaAdvogado HTTP/1.1" 200 71
+0:0:0:0:0:0:0:1 - - [30/Aug/2019:15:11:38 -0300] "POST /CRUDJUSTTOWEB/adicionaAdvogado HTTP/1.1" 200 79
+0:0:0:0:0:0:0:1 - - [30/Aug/2019:16:42:43 -0300] "POST /CRUDJUSTTOWEB/adicionaAdvogado HTTP/1.1" 404 1066
+0:0:0:0:0:0:0:1 - - [30/Aug/2019:17:04:11 -0300] "POST /CRUDJUSTTOWEB/adicionaAdvogado HTTP/1.1" 404 1066

@@ -1,0 +1,5 @@
+package dao;
+//TODO : implementar interface com mysql
+public class ConnectionFactory {
+
+}

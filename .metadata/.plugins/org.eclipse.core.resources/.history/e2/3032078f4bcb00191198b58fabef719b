@@ -1,0 +1,8 @@
+package table;
+
+public enum ColunasAdvogado {
+	public static final int COL_CODIGO_PRODUTO = 0;
+	public static final int COL_DESC_PRODUTO = 0;
+	public static final int COL_PRECO_PRODUTO = 0;
+	
+}

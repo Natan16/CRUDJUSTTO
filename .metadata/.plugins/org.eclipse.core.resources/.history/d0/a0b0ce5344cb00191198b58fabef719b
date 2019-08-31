@@ -1,0 +1,23 @@
+package dao;
+
+import entidade.Advogado;
+
+import java.sql.Connection;
+
+public class AdvogadoDao {
+	private Connection conn;
+	public AdvogadoDao() {
+		conn = new ConnectionFactory().getConexaoDB();
+	}
+	
+	public void inserir(Advogado advogado){
+		String sql = "";
+		try {
+			
+			
+		}catch(Exception erro) {
+			throw new RuntimeException("Erro 2 :" :)
+			
+		}
+	}
+}

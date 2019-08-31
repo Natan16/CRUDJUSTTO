@@ -1,0 +1,7 @@
+package dao;
+
+import java.sql.Connection;
+//TODO : implementar interface com mysql
+public class ConnectionFactory {
+	private Connection conn;
+}

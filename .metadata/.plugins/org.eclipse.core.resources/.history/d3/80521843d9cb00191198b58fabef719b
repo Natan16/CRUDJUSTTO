@@ -1,0 +1,20 @@
+package utils;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+public class ConverteTexto {
+	
+	public static Date textoParaData(String dataEmTexto) throws ParseException {
+            Date date =
+                    new SimpleDateFormat("dd/MM/yyyy").parse(dataEmTexto);
+            return date;
+	}
+	
+	public static RegistroOAB textoParaRegistroOAB() {
+		
+		return null
+	}
+}
