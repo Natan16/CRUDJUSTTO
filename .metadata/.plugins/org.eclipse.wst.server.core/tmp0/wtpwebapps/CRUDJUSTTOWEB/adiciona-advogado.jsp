@@ -5,21 +5,47 @@
 
 <html>
      <body>
+     
+     	<form action="index.html" method="post">
+			<input type="submit" value="INÍCIO" >
+		</form>
+		
+		<form action="consulta-advogado.jsp" method="post">
+			<input type="submit" value="BUSCAR ADVOGADO" >
+		</form>
           CADASTRO DE ADVOGADOS <br />
       	<form action="adicionaAdvogado">
-             <c:choose>
-			 	<c:when test="${not empty param.nome}">
-					Nome: <input type="text" name="nome" placeholder="Nome Completo" value="${param.nome}" required/><br />
-			    </c:when>
-			 
-			    <c:otherwise>
-			   		Nome: <input type="text" name="nome" placeholder="Nome Completo" required/><br />
-			    </c:otherwise>
-			 </c:choose> 
+           <%--  <%	
+				boolean modoEditar = true ;
+ 			%>
+		 	<c:if test="${param.ufOAB == null}">
+				<%	
+             		modoEditar = false; 
+                %> 		
+			</c:if>
+			
+			<c:if test="${param.registroOAB == null}">
+				<%	
+					modoEditar = false; 
+                %> 		
+			</c:if> --%>
+		 
+			 Nome: <input type="text" name="nome" placeholder="Nome Completo" required/><br /> 
          	 E-mail: <input type="text" name="email" placeholder="email@oab" required/><br />
              Telefone: <input type="text" name="telefone" placeholder="(XX)XXXXX-XXXX"/><br />
              Data Nascimento: <input type="text" name="dataNascimento" placeholder="dd/MM/aaaa"/><br />
              Senha: <input type="password" name="senha" placeholder="***********" required/><br />
+             
+            <%--  <%	
+             	if(modoEditar){
+             		AdvogadoDao dao = new AdvogadoDao();
+             	    String ufOAB = %>"${param.ufOAB}"<%	;
+             		String registroOAB = %>	${param.registroOAB}"<% ;
+             		Advogado advogado = dao.procurarPorRegistro(new RegistroOAB(ufOAB , registroOAB));
+           		
+             	} 
+             %>
+              --%>
              
                           UF &nbsp;&emsp; Registro OAB <br />
              <select name="ufOAB">
@@ -30,7 +56,7 @@
                 	<option value=<%=uf %>><%=uf%></option>
                 <%
                 }
-                %>
+                %> 
   			 </select>
   			 <input type="text" name="registroOAB" /><br />
   			 <br />
@@ -38,6 +64,19 @@
              Descrição: <br />
              <textarea rows = "5" cols = "60" name = "desc"></textarea><br> 
              <input   type="submit" value="Registrar" />
+             <%--  <%	
+             	if(modoEditar){
+          
+              %>
+             		<input   type="submit" value="Atualizar" />
+             <%
+             	}else {
+             %>
+             		<input   type="submit" value="Registrar" />
+             <%
+             	}
+             %> --%>
          </form>
+        
      </body>
  </html>

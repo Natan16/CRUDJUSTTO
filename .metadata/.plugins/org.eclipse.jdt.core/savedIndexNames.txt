@@ -11,7 +11,6 @@ INDEX VERSION 1.131+C:\Dev\CRUDJUSTTO\.metadata\.plugins\org.eclipse.jdt.core
 104023874.index
 3949369040.index
 113558702.index
-1665328876.index
 2303608271.index
 1397117097.index
 1869838035.index

@@ -1,0 +1,58 @@
+<%@ page import="utils.Listagens,
+				 java.util.List,
+                  dao.*,
+                  model.*" %>
+<%	
+	boolean modoEditar = true ;
+ %>
+<html>
+     <body>
+          CADASTRO DE ADVOGADOS <br />
+      	<form action="adicionaAdvogado">
+            
+		 	<c:if test="${empty param.ufOAB}">
+				<%	
+             		modoEditar = false; 
+                %> 		
+			</c:if>
+			<c:if test="${empty param.registroOAB}">
+				<%	
+             		modoEditar = false; 
+                %> 		
+			</c:if>
+		 
+			 Nome: <input type="text" name="nome" placeholder="Nome Completo" required/><br /> 
+         	 E-mail: <input type="text" name="email" placeholder="email@oab" required/><br />
+             Telefone: <input type="text" name="telefone" placeholder="(XX)XXXXX-XXXX"/><br />
+             Data Nascimento: <input type="text" name="dataNascimento" placeholder="dd/MM/aaaa"/><br />
+             Senha: <input type="password" name="senha" placeholder="***********" required/><br />
+             
+             <%	
+             	if(modoEditar){
+             		//obter objeto advogado correspondente e preencher os parâmetros ( exceto senha )
+             		{param.registroOAB}
+             		{param.registroOAB}
+             	} 
+             %>
+             
+             
+                          UF &nbsp;&emsp; Registro OAB <br />
+             <select name="ufOAB">
+             	<%	
+             	List<String> ufs = Listagens.getUfs();
+			 	for (String uf : ufs ) {
+                %>
+                	<option value=<%=uf %>><%=uf%></option>
+                <%
+                }
+                %>
+  			 </select>
+  			 <input type="text" name="registroOAB" /><br />
+  			 <br />
+			 
+             Descrição: <br />
+             <textarea rows = "5" cols = "60" name = "desc"></textarea><br> 
+             <input   type="submit" value="Registrar" />
+         </form>
+     </body>
+ </html>

@@ -1,0 +1,14 @@
+<html>
+	<head>
+		<title>Projeto CRUDJUSTTO</title>
+	</head>
+	<body>
+		<h1>Primeira página do projeto CRUDJUSTTO</h1>
+		
+		<form action="adiciona-advogado.jsp" method="get">
+			<input type="submit" value="" >
+		</form>
+		
+		
+	</body>
+</html>

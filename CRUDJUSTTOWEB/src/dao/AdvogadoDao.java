@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import model.Advogado;
+import model.RegistroOAB;
 
 public class AdvogadoDao {
 	private Connection conn;
@@ -46,10 +47,23 @@ public class AdvogadoDao {
 			throw new RuntimeException("Erro na inserção de Advogado :" + erro);
 		}
 	}
-	public void alterar(Advogado advogado){
-		String sql = "";
+	public void alterar(Advogado advogado, String senha){
+		
+		String sql = "UPDATE advogados SET descricao=?, email=?, nome=?, telefone=? , senha=?"
+				+ " WHERE uf=? AND registro=?";
 		try {
-			
+			//TODO : adicionar dataDeNascimento, que ainda está dando problema
+;			System.out.println(advogado.getRegistroOAB().getNumero());
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, advogado.getDesc() );
+			stmt.setString(2 , advogado.getEmail());
+			stmt.setString(3 , advogado.getNome());
+			stmt.setString(4 , advogado.getTelefone());
+			stmt.setString(5 , advogado.getSenha());
+			stmt.setString(6 , advogado.getRegistroOAB().getUF());
+			stmt.setString(7 , advogado.getRegistroOAB().getNumero());
+			stmt.execute();
+			stmt.close();
 			
 		}catch(Exception erro) {
 			//TODO : trocar texto da excessão por algo mais descritivo
@@ -71,6 +85,7 @@ public class AdvogadoDao {
 			throw new RuntimeException("Erro 4 :" +erro);
 		}
 	}
+	//registro não está sendo atualizado
 	public ArrayList<Advogado> listarTodos(){
 		String sql = "SELECT * FROM advogados";
 		try {
@@ -88,13 +103,12 @@ public class AdvogadoDao {
 				String senha = rs.getString("senha");
 				//usar registro OAB não é legal, pois aumenta acoplamento
 				//usar uma facade ou criar um construtor a mais em advogado
-				Advogado advogado = new Advogado();
+				Advogado advogado = new Advogado(senha);
 				advogado.setNome(nome);
 	            advogado.setTelefone(telefone);
 	            advogado.setEmail(email);
 	            //TODO : lidar com a conversão da data de nascimento
 	            //advogado.setDataNascimento(Calendar.getInstance().setTime(dataNascimento.to));
-	            advogado.setSenha(senha);
 	            advogado.setDesc(descricao);
 				advogado.criarRegistroOAB(uf ,registro);
 				queryAdvogados.add(advogado);
@@ -112,7 +126,7 @@ public class AdvogadoDao {
 		//o mecanismo de busca vai listar todos os advogados que tenham algum dos parâmetros
 		//contendo as partes buscadas
 		
-		String sql = "SELECT * FROM advogados WHERE descricao LIKE '%" + valor + "%'";
+		String sql = "SELECT * FROM advogados WHERE ";
 		try {
 			
 			
@@ -121,5 +135,39 @@ public class AdvogadoDao {
 			throw new RuntimeException("Erro 2 :" +erro);
 		}
 		return null;
+	}
+	
+	public Advogado procurarPorRegistro(RegistroOAB registroOAB ) {
+		String uf = registroOAB.getUF();
+		String registro = registroOAB.getNumero();
+		
+		String sql = "SELECT * FROM advogados WHERE uf=? AND registro=?";
+		Advogado advogado = null;
+		try {
+			st = conn.createStatement();
+			rs = st.executeQuery(sql);
+			if(rs.next()) {
+				String descricao = rs.getString("descricao");
+				String email = rs.getString("email");
+				String nome = rs.getString("nome");
+				String telefone = rs.getString("telefone");
+				Date dataNascimento = rs.getDate("dataNascimento");
+				String senha = rs.getString("senha");
+				advogado = new Advogado(senha);
+				advogado.setNome(nome);
+	            advogado.setTelefone(telefone);
+	            advogado.setEmail(email);
+	            //TODO : lidar com a conversão da data de nascimento
+	            advogado.setDesc(descricao);
+				advogado.criarRegistroOAB(uf ,registro);
+				queryAdvogados.add(advogado);
+			}
+		}catch(Exception erro) {
+			//TODO : trocar texto da excessão por algo mais descritivo
+			throw new RuntimeException("Erro 2 :" +erro);
+		}
+		return advogado; 
+		
+		
 	}
 }

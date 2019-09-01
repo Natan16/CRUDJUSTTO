@@ -1,0 +1,25 @@
+<html>
+	<head>
+		<title>Projeto CRUDJUSTTO</title>
+	</head>
+	<body>
+		<h1>Primeira página do projeto CRUDJUSTTO</h1>
+		<h3>
+			<p>
+				O projeto se trata de uma plataforma onde startups podem <br>
+				contratar serviços Freelancer de Advogados Especializados<br>
+				para acelerar o processor
+			</p>
+		
+		</h3>
+		<form action="adiciona-advogado.jsp" method="post">
+			<input type="submit" value="CADASTRAR ADVOGADO" >
+		</form>
+		
+		<form action="consulta-advogado.jsp" method="post">
+			<input type="submit" value="BUSCAR ADVOGADO" >
+		</form>
+		
+		
+	</body>
+</html>

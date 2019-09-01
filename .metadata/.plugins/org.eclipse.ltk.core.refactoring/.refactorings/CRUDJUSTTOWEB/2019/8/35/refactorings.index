@@ -13,3 +13,4 @@
 1567272633877	Rename type 'Lista'
 1567285257659	Rename resource 'consulta-advogado.jsp'
 1567285968735	Rename resource 'consultaAdvogado.jsp'
+1567293767782	Encapsulate field 'senha'

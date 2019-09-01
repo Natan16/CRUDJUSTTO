@@ -5,7 +5,14 @@
                   model.Advogado" %>
 <html>
     <body>
-    	
+    	<form action="index.html" method="post">
+			<input type="submit" value="INÍCIO" >
+		</form>
+		
+		<form action="adiciona-advogado.jsp" method="post">
+			<input type="submit" value="CADASTRAR ADVOGADO" >
+		</form>
+		
     	<form action="consulta-advogado.jsp" method="get">
     		<input type="text" name="filtro" >
     		<input type="image" src="images/search_icon.png"  width="20" height="20" value="" >
@@ -25,7 +32,11 @@
                     <td><%=advogado.getEmail() %></td>
                     <td><%=advogado.getTelefone() %></td>
                     <td>
-                    	<form action="adiciona-advogado.jsp" method="get">
+                    	<form action="edita-advogado.jsp" method="get">
+               				<input type="hidden" name="nome" value=<%=advogado.getNome()%> />
+        					<input type="hidden" name="email" value=<%=advogado.getEmail()%> />
+        					<input type="hidden" name="telefone" value=<%=advogado.getTelefone()%> />
+        					<input type="hidden" name="descricao" value=<%=advogado.getDesc()%> />
                
     						<input type="hidden" name="ufOAB" value=<%=advogado.getRegistroOAB().getUF()%> />
     						<input type="hidden" name="registroOAB" value=<%=advogado.getRegistroOAB().getNumero()%> />
@@ -34,7 +45,7 @@
         				</form>
         				
         				<form action="excluiAdvogado" method="get">
-        				    <input type="hidden" name="ufOAB" value=<%=advogado.getRegistroOAB().getUF()%> />
+        					        				    <input type="hidden" name="ufOAB" value=<%=advogado.getRegistroOAB().getUF()%> />
     						<input type="hidden" name="registroOAB" value=<%=advogado.getRegistroOAB().getNumero()%> />
     						<input type="image" src="images/delete_icon.png"  width="20" height="20" value="" >
         				</form>
