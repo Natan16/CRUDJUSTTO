@@ -1,0 +1,19 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import model.RegistroOAB;
+
+public class RegistroOABTest {
+
+	@Test
+	public void testRegistroValido() {
+		assertFalse(RegistroOAB.registroValido("1Z3456"));
+		
+		assertFalse(RegistroOAB.registroValido("123AB456"));
+		assertFalse(RegistroOAB.registroValido(""));
+	}
+
+}

@@ -1,0 +1,73 @@
+package model;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Pattern;
+
+import utils.Listagens;
+
+//A - Inscrição Suplementar
+//B - Inscrição por Transferência
+//E - Inscrição de Estagiário
+//N - Inscrição de Provisionado
+//P - Inscrição Provisória.
+//se não tiver, considerar letra D
+public class RegistroOAB {
+	
+	private String UF;
+	private String numero;
+	private int tipo;
+	
+	//dicionarioTipo = new ArrayMap<Character , String>();//dicionário que mapeia os tipos nas descrições dos tipos
+	 
+	//verifica se um determinado numero de registro é válido 
+	public static boolean registroValido(String numero) {
+		Pattern.matches("[0-9]*[][0-9]*", numero)
+		return true;
+	}
+	
+	public RegistroOAB(String UF , String numero) {
+		this.UF = UF; 
+		this.numero = numero;
+		this.tipo = getTipoFromNumero(numero);
+	}
+	public RegistroOAB(String UF , String numero , char tipo){
+		this(UF , numero);
+		this.tipo = tipo;
+	}
+
+	public String getUF() {
+		return UF;
+	}
+
+	public void setUF(String UF) {
+		this.UF = UF;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+
+	public void setNumero(String numero) {
+		this.numero = numero;
+	}
+
+	public int getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+	
+	private char getTipoFromNumero(String numero) {
+		numero = numero.toUpperCase();
+		for (char tipo : Listagens.getTiposDeRegistro() ) {
+			if( numero.contains(String.valueOf(tipo)) )
+				return tipo;
+		}
+		return 'D';
+		
+	}
+	//TODO : aqui seria um bom canto pra chegar validade do registro?
+}

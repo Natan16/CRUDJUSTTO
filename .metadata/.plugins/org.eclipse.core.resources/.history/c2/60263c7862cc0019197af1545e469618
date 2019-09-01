@@ -1,0 +1,23 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import model.RegistroOAB;
+
+public class RegistroOABTest {
+
+	@Test
+	public void testRegistroValido() {
+		assertTrue(RegistroOAB.registroValido("1E3456"));
+		assertTrue(RegistroOAB.registroValido("13456"));
+		
+		assertFalse(RegistroOAB.registroValido("-000000")); //não alfanumérico
+		assertFalse(RegistroOAB.registroValido("P246D257"));//mais de 1 letra separadas
+		assertFalse(RegistroOAB.registroValido("123AB456"));//mais de 1 letra juntas
+		assertFalse(RegistroOAB.registroValido(""));
+		assertFalse(RegistroOAB.registroValido("1Z3456"));
+	}
+
+}

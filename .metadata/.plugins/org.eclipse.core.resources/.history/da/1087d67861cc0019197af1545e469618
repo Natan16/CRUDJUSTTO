@@ -1,0 +1,17 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import model.RegistroOAB;
+
+public class RegistroOABTest {
+
+	@Test
+	public void testRegistroValido() {
+		assertTrue(RegistroOAB.registroValido(numero));
+		fail("Not yet implemented");
+	}
+
+}

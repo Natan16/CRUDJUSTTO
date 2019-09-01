@@ -4,15 +4,20 @@
                   model.*" %>
 
 <html>
+	<head>
+		<link href="Estilo.css" rel="stylesheet" media="all" />
+	</head>
      <body>
      
-     	<form action="index.html" method="post">
+     	<form action="index.html" method="post" style="float:left;">
 			<input type="submit" value="INÍCIO" >
 		</form>
 		
-		<form action="consulta-advogado.jsp" method="post">
+		<form action="consulta-advogado.jsp" method="post" style="float:right;">
 			<input type="submit" value="BUSCAR ADVOGADO" >
 		</form>
+		
+		<br><br>
           CADASTRO DE ADVOGADOS <br />
           
       	<form action="editaAdvogado">
@@ -26,7 +31,7 @@
              Nova Senha: <input type="password" name="nova_senha" placeholder="***********"/><br />
             
              
-                          UF &nbsp;&emsp; Registro OAB <br />
+                       &emsp; UF &nbsp;&emsp;&emsp;&emsp;&emsp; Registro OAB <br />
              <select name="ufOAB">
            		<option selected>${param.ufOAB}</option>
              	<%	

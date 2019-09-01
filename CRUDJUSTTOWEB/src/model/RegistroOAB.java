@@ -22,8 +22,7 @@ public class RegistroOAB {
 	 
 	//verifica se um determinado numero de registro é válido 
 	public static boolean registroValido(String numero) {
-		Pattern.matches("[amn]", "abcd");
-		return true;
+		return numero.matches("[0-9]+[ABENPD]?[0-9]*");
 	}
 	
 	public RegistroOAB(String UF , String numero) {

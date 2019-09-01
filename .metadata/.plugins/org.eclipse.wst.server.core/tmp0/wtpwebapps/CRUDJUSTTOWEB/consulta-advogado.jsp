@@ -4,15 +4,18 @@
                   model.RegistroOAB,
                   model.Advogado" %>
 <html>
+	<head>
+		<link href="EstiloConsulta.css" rel="stylesheet" media="all" />
+	</head>
     <body>
-    	<form action="index.html" method="post">
-			<input type="submit" value="INÍCIO" >
+    	<form action="index.html" method="post"  style="float:left;">
+			<input type="submit" value="INÍCIO"  >
 		</form>
 		
-		<form action="adiciona-advogado.jsp" method="post">
+		<form action="adiciona-advogado.jsp" method="post"  style="float:right;">
 			<input type="submit" value="CADASTRAR ADVOGADO" >
 		</form>
-		
+		<br><br>
     	<form action="consulta-advogado.jsp" method="get">
     		<input type="text" name="filtro" >
     		<input type="image" src="images/search_icon.png"  width="20" height="20" value="" >
@@ -45,11 +48,14 @@
         				</form>
         				
         				<form action="excluiAdvogado" method="get">
-        					        				    <input type="hidden" name="ufOAB" value=<%=advogado.getRegistroOAB().getUF()%> />
+        				    <input type="hidden" name="ufOAB" value=<%=advogado.getRegistroOAB().getUF()%> />
     						<input type="hidden" name="registroOAB" value=<%=advogado.getRegistroOAB().getNumero()%> />
     						<input type="image" src="images/delete_icon.png"  width="20" height="20" value="" >
         				</form>
         			</td>                  
+                </tr>
+                <tr>
+                 <td>----------</td>
                 </tr>
                                   
             <%

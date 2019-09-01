@@ -16,11 +16,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.AdvogadoDao;
 import model.Advogado;
+import model.RegistroOAB;
 import utils.ConverteTexto;
 
 @WebServlet("/adicionaAdvogado")
 public class AdicionaAdvogadoServlet extends HttpServlet {
-	
+	    //URLBuilder urlb = new URLBuilder("www.example.com");
 		public void init(ServletConfig config) throws ServletException {
 	        super.init(config);
 	        log("Iniciando a servlet");
@@ -32,7 +33,6 @@ public class AdicionaAdvogadoServlet extends HttpServlet {
 	    }
 		@Override
 		protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			
 			PrintWriter out = response.getWriter();
 			
 			// buscando os parâmetros no request
@@ -61,17 +61,31 @@ public class AdicionaAdvogadoServlet extends HttpServlet {
                 dataNascimento.setTime(date);
                 
             } catch (ParseException e) {
+            	//throws()
                 out.println("Formato de data incorreto");
                 return; 
             }
-                                  
+            
+           
             //TODO : verificar se registro duplicado
             //TODO : adicionar confirmação por email
             //TODO : a outra entidade que poderia ter no banco de dados é o escritório
+            //monta uma URL com os parametros que já tinha 
+            //e indicando qual está no padrão errado
+            //response.sendRedirect("http://localhost:8080/CRUDJUSTTOWEB/adiciona-advogado.jsp");
             
     
             // monta um objeto Advogado
+            
             Advogado advogado = new Advogado(senha);
+            if (RegistroOAB.registroValido(registroOABEmTexto)) {
+            	
+           
+            } else {
+            	//já adiciona na lista de parâmetros inadequados
+            	
+            }
+            
             advogado.criarRegistroOAB(ufRegistroOAB ,registroOABEmTexto);
             advogado.setNome(nome);
             advogado.setTelefone(telefone);
