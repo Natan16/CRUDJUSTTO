@@ -1,0 +1,25 @@
+package test;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+import model.Advogado;
+
+public class AvaliadorDeFormatacaoTest {
+
+	@Test
+	public void test() {
+		assertTrue(AvaliadorDeFormatacaoTest.emailOabValido(""));
+		assertTrue(AvaliadorDeFormatacaoTest.emailOabValido(""));
+		assertTrue(AvaliadorDeFormatacaoTest.emailOabValido(""));
+		assertTrue(AvaliadorDeFormatacaoTest.emailOabValido(""));
+
+		assertFalse(AvaliadorDeFormatacaoTest.emailOabValido(""));
+		assertFalse(AvaliadorDeFormatacaoTest.emailOabValido(""));
+		assertFalse(AvaliadorDeFormatacaoTest.emailOabValido(""));
+		assertFalse(AvaliadorDeFormatacaoTest.emailOabValido(""));
+
+	}
+
+}

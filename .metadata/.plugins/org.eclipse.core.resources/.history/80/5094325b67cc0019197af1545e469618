@@ -16,15 +16,12 @@ h1 {
 
 select {
 	width: 70px;
-    padding: 10px;
     color: black;
     margin-left: 20px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border: 1px solid;
+
 }
 
- textarea {
+textarea {
     width: 200px;
     padding: 10px;
     color: black;
@@ -66,4 +63,3 @@ form label {
     color: #FFFFFF;
     font-weight: bold;
 }
-

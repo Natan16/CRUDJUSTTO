@@ -1,0 +1,8 @@
+package utils;
+
+public class AvaliadorDeFormatacao {
+	//TODO : implementar
+		public static boolean telefoneValido(String telefone) {
+			return true;
+		}
+}

@@ -3,12 +3,12 @@ package table;
 import javax.swing.table.AbstractTableModel;
 
 public class AdvogadoTableModel extends AbstractTableModel{
-	//TODO : criar enum 
-	public static final int COL_CODIGO_PRODUTO = 0;
-	public static final int COL_DESC_PRODUTO = 0;
-	public static final int COL_PRECO_PRODUTO = 0;
 	
-	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub

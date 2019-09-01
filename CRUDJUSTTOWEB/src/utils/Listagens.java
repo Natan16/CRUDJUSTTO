@@ -18,6 +18,6 @@ public class Listagens {
 	
 	public static List<Character> getTiposDeRegistro() {
 		return tiposDeRegistro;
-}
+	}
 	
 }

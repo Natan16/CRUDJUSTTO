@@ -1,0 +1,12 @@
+package table;
+
+public enum ColunasAdvogado {
+	COL_DESCRICAO(0) ,
+	COL_EMAIL(1) ,
+	COL_PRECO_PRODUTO(2) ;
+	
+	public int coluna;
+	ColunasAdvogado(int indice_coluna){
+		coluna = indice_coluna;
+	}
+}

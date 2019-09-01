@@ -1,10 +1,10 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Pattern;
+
 
 import utils.Listagens;
+
+import web.CadastroInvalidoException;
 
 //A - Inscrição Suplementar
 //B - Inscrição por Transferência
@@ -19,20 +19,29 @@ public class RegistroOAB {
 	private int tipo;
 	
 	//dicionarioTipo = new ArrayMap<Character , String>();//dicionário que mapeia os tipos nas descrições dos tipos
-	 
+	 //TODO : impedir que alguém se registre com registro de outra pessoa
 	//verifica se um determinado numero de registro é válido 
-	public static boolean registroValido(String numero) {
+	public static boolean registroValido(String numero)   {
 		return numero.matches("[0-9]+[ABENPD]?[0-9]*");
 	}
 	
-	public RegistroOAB(String UF , String numero) {
-		this.UF = UF; 
-		this.numero = numero;
-		this.tipo = getTipoFromNumero(numero);
+	public RegistroOAB(String UF , String numero) throws CadastroInvalidoException {
+		if(registroValido(numero)){
+			this.UF = UF; 
+			this.numero = numero.toUpperCase();
+			this.tipo = getTipoFromNumero(numero.toUpperCase());
+		} else {
+			throw new CadastroInvalidoException("Numero de Registro Inválido");
+		}
+	
 	}
-	public RegistroOAB(String UF , String numero , char tipo){
+	public RegistroOAB(String UF , String numero , char tipo) throws CadastroInvalidoException{
 		this(UF , numero);
-		this.tipo = tipo;
+		if(getTipoFromNumero(numero) == tipo) {
+			this.tipo = tipo;
+		} else {
+			throw new CadastroInvalidoException("Tipo de registro incompatível");
+		}
 	}
 
 	public String getUF() {

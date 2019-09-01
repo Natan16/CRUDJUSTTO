@@ -5,7 +5,7 @@
                   model.Advogado" %>
 <html>
 	<head>
-		<link href="EstiloConsulta.css" rel="stylesheet" media="all" />
+		<link href="Estilo.css" rel="stylesheet" media="all" />
 	</head>
     <body>
     	<form action="index.html" method="post"  style="float:left;">
@@ -54,8 +54,10 @@
         				</form>
         			</td>                  
                 </tr>
+               
                 <tr>
-                 <td>----------</td>
+                 <td><br></td>
+                 <td>----------------------------</td>
                 </tr>
                                   
             <%

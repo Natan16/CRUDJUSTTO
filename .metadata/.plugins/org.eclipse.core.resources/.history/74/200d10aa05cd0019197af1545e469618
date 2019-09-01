@@ -1,0 +1,8 @@
+package web;
+
+public class CadastroInvalidoException extends Exception {
+	public CadastroInvalidoException( String errorMessage , Throwable err) {
+		super(errorMessage);
+	} 
+		
+}

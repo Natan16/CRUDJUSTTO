@@ -34,11 +34,11 @@
                 %> 		
 			</c:if> --%>
 		 
-			 Nome: <input type="text" name="nome" placeholder="Nome Completo" required/><br /> 
-         	 E-mail: <input type="text" name="email" placeholder="email@oab" required/><br />
-             Telefone: <input type="text" name="telefone" placeholder="(XX)XXXXX-XXXX"/><br />
-             Data Nascimento: <input type="text" name="dataNascimento" placeholder="dd/MM/aaaa"/><br />
-             Senha: <input type="password" name="senha" placeholder="***********" required/><br />
+			 Nome:<br /> <input type="text" name="nome" placeholder="Nome Completo" required/><br /> 
+         	 E-mail:<br />  <input type="text" name="email" placeholder="email@adv.oabuf.org.br" required/><br />
+             Telefone:<br />  <input type="text" name="telefone" placeholder="(XX)XXXXX-XXXX"/><br />
+             Data Nascimento:<br />  <input type="text" name="dataNascimento" placeholder="dd/MM/aaaa"/><br />
+             Senha:<br>  <input type="password" name="senha" placeholder="***********" required/><br />
              
             <%--  <%	
              	if(modoEditar){

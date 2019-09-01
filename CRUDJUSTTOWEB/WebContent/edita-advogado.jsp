@@ -23,12 +23,12 @@
       	<form action="editaAdvogado">
 			 
 		 
-			 Nome: <input type="text" name="nome" value="${param.nome}"  required/><br /> 
-         	 E-mail: <input type="text" name="email" value="${param.email}" required/><br />
-             Telefone: <input type="text" name="telefone" value="${param.telefone}"/><br />
-             Data Nascimento: <input type="text" name="dataNascimento" placeholder="dd/MM/aaaa"/><br />
-             Senha Antiga: <input type="password" name="senha" placeholder="***********" required/><br />
-             Nova Senha: <input type="password" name="nova_senha" placeholder="***********"/><br />
+			 Nome:<br /> <input type="text" name="nome" value="${param.nome}"  required/><br /> 
+         	 E-mail:<br /> <input type="text" name="email" value="${param.email}" required/><br />
+             Telefone:<br /> <input type="text" name="telefone" value="${param.telefone}"/><br />
+             Data Nascimento:<br /> <input type="text" name="dataNascimento" placeholder="dd/MM/aaaa"/><br />
+             Senha Antiga:<br /> <input type="password" name="senha" placeholder="***********" required/><br />
+             Senha Nova:<br /> <input type="password" name="nova_senha" placeholder="***********"/><br />
             
              
                        &emsp; UF &nbsp;&emsp;&emsp;&emsp;&emsp; Registro OAB <br />

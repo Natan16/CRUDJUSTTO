@@ -2,6 +2,10 @@ package model;
 
 import java.util.Calendar;
 
+import web.CadastroInvalidoException;
+
+import utils.AvaliadorDeFormatacao;
+import utils.AvaliadorDeFormatacao;
 public class Advogado {
 	
 	private String nome;
@@ -12,8 +16,6 @@ public class Advogado {
 	private String desc;
 	private String senha;
 	//TODO : colocar o escritório ao qual ele é vinculado
-	
-	//TODO : importante atribuir id único a cada instância
 	
 	public Advogado() {
 		
@@ -38,13 +40,16 @@ public class Advogado {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
+	
+	
 	public String getTelefone() {
 		return telefone;
 	}
 
 	public void setTelefone(String telefone) {
-		this.telefone = telefone;
+		if (AvaliadorDeFormatacao.telefoneValido(telefone)) {
+			this.telefone = telefone;
+		}
 	}
 
 	public String getEmail() {
@@ -52,11 +57,14 @@ public class Advogado {
 	}
 
 	public void setEmail(String email) {
-		this.email = email;
+		if(AvaliadorDeFormatacao.emailOabValido(email)) {
+			this.email = email;
+		}else {
+			throw new CadastroInvalidoException("o email OAB passado está incorreto"); 
+		}
 	}
 
-	public void setRegistroOAB() {
-	}
+	
 	
 	public RegistroOAB getRegistroOAB() {
 		return registroOAB;
@@ -75,7 +83,11 @@ public class Advogado {
 	}
 
 	public void criarRegistroOAB(String uf , String registro) {
-		this.registroOAB = new RegistroOAB(uf, registro);
+		try {
+			this.registroOAB = new RegistroOAB(uf, registro);
+		}catch(CadastroInvalidoException e) {
+			System.out.println(e.getStackTrace());
+		}
 	}
 	//TODO : a ideia é ser protected também e só a fachada poder acessar 
 	//a fachada vai ser com o banco de dados

@@ -21,6 +21,10 @@ import utils.ConverteTexto;
 @WebServlet("/editaAdvogado")
 public class EditaAdvogadoServlet extends HttpServlet {
 	
+		/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 		public void init(ServletConfig config) throws ServletException {
 	        super.init(config);
 	        log("Iniciando a servlet");
@@ -61,19 +65,23 @@ public class EditaAdvogadoServlet extends HttpServlet {
                 dataNascimento.setTime(date);
                 
             } catch (ParseException e) {
-                out.println("Formato de data incorreto");
+                out.println("Preenchimento incorreto : Formato de data incorreto");
                 return; 
             }
             
             // monta um objeto Advogado
             Advogado advogado = new Advogado(nova_senha);
-            advogado.criarRegistroOAB(ufRegistroOAB ,registroOABEmTexto);
-            advogado.setNome(nome);
-            advogado.setTelefone(telefone);
-            advogado.setEmail(email);
-            advogado.setDataNascimento(dataNascimento);
-            advogado.setDesc(descricao);
-            
+            try {
+	            advogado.criarRegistroOAB(ufRegistroOAB ,registroOABEmTexto);
+	            advogado.setNome(nome);
+	            advogado.setTelefone(telefone);
+	            advogado.setEmail(email);
+	            advogado.setDataNascimento(dataNascimento);
+	            advogado.setDesc(descricao);
+			} catch(CadastroInvalidoException e) {
+	        	out.println("Preenchimento Incorreto :" + e);
+	            return; 
+	        }
             
             //salva o registro
             AdvogadoDao dao = new AdvogadoDao();

@@ -21,7 +21,11 @@ import utils.ConverteTexto;
 
 @WebServlet("/adicionaAdvogado")
 public class AdicionaAdvogadoServlet extends HttpServlet {
-	    //URLBuilder urlb = new URLBuilder("www.example.com");
+	    /**
+	 * 
+	 */
+	    private static final long serialVersionUID = 1L;
+		//URLBuilder urlb = new URLBuilder("www.example.com");
 		public void init(ServletConfig config) throws ServletException {
 	        super.init(config);
 	        log("Iniciando a servlet");
@@ -61,7 +65,6 @@ public class AdicionaAdvogadoServlet extends HttpServlet {
                 dataNascimento.setTime(date);
                 
             } catch (ParseException e) {
-            	//throws()
                 out.println("Formato de data incorreto");
                 return; 
             }
@@ -86,12 +89,17 @@ public class AdicionaAdvogadoServlet extends HttpServlet {
             	
             }
             
-            advogado.criarRegistroOAB(ufRegistroOAB ,registroOABEmTexto);
-            advogado.setNome(nome);
-            advogado.setTelefone(telefone);
-            advogado.setEmail(email);
-            advogado.setDataNascimento(dataNascimento);
-            advogado.setDesc(descricao);
+            try {
+            	advogado.criarRegistroOAB(ufRegistroOAB ,registroOABEmTexto);
+            	advogado.setNome(nome);
+                advogado.setTelefone(telefone);
+                advogado.setEmail(email);
+                advogado.setDataNascimento(dataNascimento);
+                advogado.setDesc(descricao);
+            } catch(CadastroInvalidoException e) {
+            	out.println("Preenchimento Incorreto :" + e);
+                return; 
+            }
             
             
             //salva o registro
@@ -100,13 +108,13 @@ public class AdicionaAdvogadoServlet extends HttpServlet {
             
             
             
-            // imprime o nome do contato que foi adicionado
-            out.println("<html>");
-            out.println("<body>");
-            out.println("Advogado " + advogado.getNome() +
-                    " adicionado com sucesso");
-            out.println("</body>");
-            out.println("</html>");
+            // imprime o nome do advogado que foi adicionado
+//            out.println("<html>");
+//            out.println("<body>");
+//            out.println("Advogado " + advogado.getNome() +
+//                    " adicionado com sucesso");
+//            out.println("</body>");
+//            out.println("</html>");
             
             response.sendRedirect("http://localhost:8080/CRUDJUSTTOWEB/consulta-advogado.jsp?nome =" + advogado.getNome());
             
