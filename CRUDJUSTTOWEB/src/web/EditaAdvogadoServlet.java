@@ -79,7 +79,7 @@ public class EditaAdvogadoServlet extends HttpServlet {
 	            advogado.setDataNascimento(dataNascimento);
 	            advogado.setDesc(descricao);
 			} catch(CadastroInvalidoException e) {
-	        	out.println("Preenchimento Incorreto :" + e);
+	        	out.println("Preenchimento Incorreto :" + e.getMessage());
 	            return; 
 	        }
             

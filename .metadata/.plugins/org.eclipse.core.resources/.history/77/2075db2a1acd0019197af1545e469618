@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.AdvogadoDao;
 import model.Advogado;
+import model.RegistroOAB;
 import utils.ConverteTexto;
 
 @WebServlet("/adicionaAdvogado")
@@ -80,7 +81,14 @@ public class AdicionaAdvogadoServlet extends HttpServlet {
             // monta um objeto Advogado
             
             Advogado advogado = new Advogado(senha);
-             
+            if (RegistroOAB.registroValido(registroOABEmTexto)) {
+            	
+           
+            } else {
+            	//já adiciona na lista de parâmetros inadequados
+            	
+            }
+            
             try {
             	advogado.criarRegistroOAB(ufRegistroOAB ,registroOABEmTexto);
             	advogado.setNome(nome);
@@ -89,7 +97,7 @@ public class AdicionaAdvogadoServlet extends HttpServlet {
                 advogado.setDataNascimento(dataNascimento);
                 advogado.setDesc(descricao);
             } catch(CadastroInvalidoException e) {
-            	out.println("Preenchimento Incorreto :" + e.getMessage());
+            	out.println("Preenchimento Incorreto :" + e);
                 return; 
             }
             

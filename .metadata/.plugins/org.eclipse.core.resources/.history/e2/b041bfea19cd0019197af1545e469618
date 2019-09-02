@@ -43,7 +43,7 @@ public class AdvogadoDao {
 			//UF e número compoem a minha PK
 			stmt.setString(ColunasAdvogado.COL_UNIDADE_FEDERATIVA.indice_coluna, advogado.getRegistroOAB().getUF());
 			stmt.setString(ColunasAdvogado.COL_REGISTRO_OAB.indice_coluna, advogado.getRegistroOAB().getNumero());
-			stmt.setString(ColunasAdvogado.COL_SENHA.indice_coluna, advogado.getSenha());
+			stmt.setString(8, advogado.getSenha());
 			
 			stmt.execute();
 			stmt.close();

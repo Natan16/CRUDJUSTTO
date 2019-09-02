@@ -10,13 +10,6 @@ form , body{
 h1 {
     margin-bottom: 20px;
     margin-left: 20px;
-    color: #ff9500;
-    text-shadow: 5px 5px 5px black;
-}
-
-h3 {
-    margin-bottom: 20px;
-    margin-left: 20px;
     color: #FFFFFF;
     text-shadow: 5px 5px 5px black;
 }
@@ -46,7 +39,7 @@ input:hover, textarea:hover, input:focus, textarea:focus {
 }
  
 .submit input {
-    background-color: #ff9500;
+    background-color: #66FFFF;
     height: 40px;
     width: 100px;
     font-weight: bold;

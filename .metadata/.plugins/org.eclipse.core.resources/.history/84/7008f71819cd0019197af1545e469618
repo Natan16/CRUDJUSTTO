@@ -14,10 +14,10 @@ h1 {
     text-shadow: 5px 5px 5px black;
 }
 
-h3 {
+h1 {
     margin-bottom: 20px;
     margin-left: 20px;
-    color: #FFFFFF;
+    color: #ff9500;
     text-shadow: 5px 5px 5px black;
 }
 

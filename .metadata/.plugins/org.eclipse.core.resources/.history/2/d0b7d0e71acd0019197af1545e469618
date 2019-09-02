@@ -86,7 +86,7 @@ public class Advogado {
 		try {
 			this.registroOAB = new RegistroOAB(uf, registro);
 		}catch(CadastroInvalidoException e) {
-			throw new CadastroInvalidoException("Numero de Registro Inválido");
+			throw new CadastroInvalidoException("Numero de Registro Inválido")
 		}
 	}
 	//TODO : a ideia é ser protected também e só a fachada poder acessar 
