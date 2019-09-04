@@ -19,7 +19,9 @@
 		
 		<br><br>
           CADASTRO DE ADVOGADOS <br />
-          
+           <%--//TODO: Passar só ufOAB e registroOB e recuperar o resto consultando o DB --%>
+      	<jsp:useBean id="advogado" class="model.Advogado"></jsp:useBean>
+      	
       	<form action="editaAdvogado">
 			 
 		 

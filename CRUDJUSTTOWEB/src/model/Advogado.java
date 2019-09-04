@@ -5,7 +5,7 @@ import java.util.Calendar;
 import web.CadastroInvalidoException;
 
 import utils.AvaliadorDeFormatacao;
-import utils.AvaliadorDeFormatacao;
+
 public class Advogado {
 	
 	private String nome;

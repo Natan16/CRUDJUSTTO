@@ -44,11 +44,11 @@ public class RegistroOAB {
 		}
 	}
 
-	public String getUF() {
+	public String getUf() {
 		return UF;
 	}
 
-	public void setUF(String UF) {
+	public void setUf(String UF) {
 		this.UF = UF;
 	}
 

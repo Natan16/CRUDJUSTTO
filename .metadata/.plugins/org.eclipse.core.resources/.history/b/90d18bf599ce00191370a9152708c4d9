@@ -1,0 +1,57 @@
+<%@ page import="utils.Listagens,
+				 java.util.List,
+                  dao.*,
+                  model.*" %>
+
+<html>
+	<head>
+		<link href="Estilo.css" rel="stylesheet" media="all" />
+	</head>
+     <body>
+     
+     	<form action="index.html" method="post" style="float:left;">
+			<input type="submit" value="INÍCIO" >
+		</form>
+		
+		<form action="consulta-advogado.jsp" method="post" style="float:right;">
+			<input type="submit" value="BUSCAR ADVOGADO" >
+		</form>
+		
+		<br><br>
+          CADASTRO DE ADVOGADOS <br />
+           <%--//TODO: Passar só ufOAB e registroOB e recuperar o resto consultando o DB --%>
+      	<jsp:useBean id="advogado" class="model.Advogado"></jsp:useBean> <br> 
+      	<jsp:useBean id="dao" class="dao.ContatoDao"/>
+      	<form action="editaAdvogado">
+			 
+		 
+			 Nome:<br /> <input type="text" name="nome" value="${param.nome}"  required/><br /> 
+         	 E-mail:<br /> <input type="text" name="email" value="${param.email}" required/><br />
+             Telefone:<br /> <input type="text" name="telefone" value="${param.telefone}"/><br />
+             Data Nascimento:<br /> <input type="text" name="dataNascimento" placeholder="dd/MM/aaaa"/><br />
+             Senha Antiga:<br /> <input type="password" name="senha" placeholder="***********" required/><br />
+             Senha Nova:<br /> <input type="password" name="nova_senha" placeholder="***********"/><br />
+            
+             
+                       &emsp; UF &nbsp;&emsp;&emsp;&emsp;&emsp; Registro OAB <br />
+             <select name="ufOAB">
+           		<option selected>${param.ufOAB}</option>
+             	<%	
+             	List<String> ufs = Listagens.getUfs();
+			 	for (String uf : ufs ) {
+                %>
+                	<option value=<%=uf %>><%=uf%></option>
+                <%
+                }
+                %> 
+  			 </select>
+  			 <input type="text" name="registroOAB" value = "${param.registroOAB}"/><br />
+  			 <br />
+			 
+             Descrição: <br />
+             <textarea rows = "5" cols = "60" name = "desc"  value = "${param.descricao}"></textarea><br> 
+             <input   type="submit" value="Atualizar" />
+         </form>
+        
+     </body>
+ </html>

@@ -90,7 +90,7 @@ public class AdvogadoDao {
 		}
 	}
 	//registro não está sendo atualizado
-	public ArrayList<Advogado> listarTodos(){
+	public ArrayList<Advogado> getLista(){
 		String sql = "SELECT * FROM advogados";
 		try {
 			st = conn.createStatement();
