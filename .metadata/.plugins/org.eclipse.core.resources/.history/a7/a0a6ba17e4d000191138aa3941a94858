@@ -1,0 +1,8 @@
+<%@ attribute name="id" required="true" %>
+
+
+<script>
+    $("#${id}").datepicker({dateFormat: 'dd/mm/yy'});
+</script>
+
+<input id="${id}" name="${id}" type="text" placeholder="dd/mm/aa" >

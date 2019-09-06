@@ -1,0 +1,4 @@
+<input id="dataNascimento" name="dataNascimento">
+<script>
+$("#dataNascimento").datepicker();
+</script>

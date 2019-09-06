@@ -12,6 +12,8 @@
 <html>
 	<head>
 		<link href="Estilo.css" rel="stylesheet" media="all" />
+		<script src="js/jquery.js"></script>
+        <script src="js/jquery-ui.js"></script>
 	</head>
     <body>
     	<form action="index.html" method="post"  style="float:left;">

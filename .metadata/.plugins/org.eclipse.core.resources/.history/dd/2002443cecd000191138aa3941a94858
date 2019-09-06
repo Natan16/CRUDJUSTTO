@@ -1,0 +1,13 @@
+<%@ attribute name="id" required="true" %>
+
+<input id="${id}" name="${id}" type="text" placeholder="dd/mm/aaaa" >
+<script>
+    $( "#${id}").datepicker({ changeYear : true ,  changeMonth: true});
+    $( "#${id}" ).datepicker( "setDate", "10/12/2002" );
+    $( "#${id}" ).datepicker({
+    	  yearRange: "2002:2012"
+    });
+    //$( "#${id}" ).datepicker( "option", "minDate", new Date(1920, 1 - 1, 1) );
+    //$( "#${id}" ).datepicker( "option", "maxDate", new Date(2007, 1 - 1, 1) );
+   
+</script>

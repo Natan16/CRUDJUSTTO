@@ -1,0 +1,10 @@
+<%@ attribute name="id" required="true" %>
+
+<input id="${id}" name="${id}" type="text" placeholder="dd/mm/aa" >
+<script>
+    $( "#${id}").datepicker({dateFormat: 'dd/mm/yy' , changeYear : true ,  changeMonth: true});
+    $( "#${id}" ).datepicker( "option", "minDate", new Date(2007, 1 - 1, 1) );
+    $( "#${id}" ).datepicker( "option", "minDate", new Date(2007, 1 - 1, 1) );
+    $( "#${id}").datepicker.setDefaults( $("#${id}").datepicker.regional[ "br" ] );
+    
+</script>

@@ -1,0 +1,2 @@
+0:0:0:0:0:0:0:1 - - [04/Sep/2019:20:00:01 -0300] "POST /CRUDJUSTTOWEB/adiciona-advogado.jsp HTTP/1.1" 200 3278
+0:0:0:0:0:0:0:1 - - [04/Sep/2019:20:00:01 -0300] "GET /CRUDJUSTTOWEB/Estilo.css HTTP/1.1" 200 1288

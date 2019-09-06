@@ -38,10 +38,10 @@ public class AdvogadoDao {
 			java.util.Date utilDate = advogado.getDataNascimento().getTime();
 			java.sql.Date date = new java.sql.Date(utilDate.getYear() ,utilDate.getMonth() ,
 					utilDate.getDay());
-			System.out.println(advogado.getRegistroOAB().getUF());
+			System.out.println(advogado.getRegistroOAB().getUf());
 			stmt.setDate(ColunasAdvogado.COL_DATA_NASCIMENTO.indice_coluna, date , Calendar.getInstance() );
 			//UF e número compoem a minha PK
-			stmt.setString(ColunasAdvogado.COL_UNIDADE_FEDERATIVA.indice_coluna, advogado.getRegistroOAB().getUF());
+			stmt.setString(ColunasAdvogado.COL_UNIDADE_FEDERATIVA.indice_coluna, advogado.getRegistroOAB().getUf());
 			stmt.setString(ColunasAdvogado.COL_REGISTRO_OAB.indice_coluna, advogado.getRegistroOAB().getNumero());
 			stmt.setString(ColunasAdvogado.COL_SENHA.indice_coluna, advogado.getSenha());
 			
@@ -64,7 +64,7 @@ public class AdvogadoDao {
 			stmt.setString(3 , advogado.getNome());
 			stmt.setString(4 , advogado.getTelefone());
 			stmt.setString(5 , advogado.getSenha());
-			stmt.setString(6 , advogado.getRegistroOAB().getUF());
+			stmt.setString(6 , advogado.getRegistroOAB().getUf());
 			stmt.setString(7 , advogado.getRegistroOAB().getNumero());
 			stmt.execute();
 			stmt.close();
@@ -80,7 +80,7 @@ public class AdvogadoDao {
 		
 		try {
 			PreparedStatement preparedStmt = conn.prepareStatement(sql);
-			preparedStmt.setString(1, advogado.getRegistroOAB().getUF());
+			preparedStmt.setString(1, advogado.getRegistroOAB().getUf());
 			preparedStmt.setString(2, advogado.getRegistroOAB().getNumero());
 			preparedStmt.execute();  
 		    conn.close();
@@ -147,7 +147,7 @@ public class AdvogadoDao {
 	}
 	
 	public Advogado procurarPorRegistro(RegistroOAB registroOAB ) {
-		String uf = registroOAB.getUF();
+		String uf = registroOAB.getUf();
 		String registro = registroOAB.getNumero();
 		
 		String sql = "SELECT * FROM advogados WHERE uf=? AND registro=?";

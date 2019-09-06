@@ -3,9 +3,16 @@
                   dao.*,
                   model.*" %>
 
+
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib tagdir="/WEB-INF/tags" prefix="formato" %>
+
+
 <html>
 	<head>
-		<link href="Estilo.css" rel="stylesheet" media="all" />
+		<link href="css/jquery-ui.css" rel="stylesheet">
+		<script src="js/jquery.js"></script>
+        <script src="js/jquery-ui.js"></script>
 	</head>
      <body>
      
@@ -37,7 +44,7 @@
 			 Nome:<br /> <input type="text" name="nome" placeholder="Nome Completo" required/><br /> 
          	 E-mail:<br />  <input type="text" name="email" placeholder="email@adv.oabuf.org.br" required/><br />
              Telefone:<br />  <input type="text" name="telefone" placeholder="(XX)XXXXX-XXXX"/><br />
-             Data Nascimento:<br />  <input type="text" name="dataNascimento" placeholder="dd/MM/aaaa"/><br />
+             Data Nascimento:<br />  <formato:campoData id = "dataNascimento"/><br />
              Senha:<br>  <input type="password" name="senha" placeholder="***********" required/><br />
              
             <%--  <%	
