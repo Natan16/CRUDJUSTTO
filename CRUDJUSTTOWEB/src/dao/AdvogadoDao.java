@@ -21,6 +21,10 @@ public class AdvogadoDao {
 	private ResultSet rs;
 	private ArrayList<Advogado> queryAdvogados = new ArrayList<Advogado>();
 	
+	public AdvogadoDao(Connection connection) {
+		this.conn = connection;
+	}
+	
 	public AdvogadoDao() {
 		conn = new ConnectionFactory().getConexaoDB();
 	}
